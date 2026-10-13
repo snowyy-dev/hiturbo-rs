@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hiturbo Camera & Flight
+Comment=OVERFLEW drone camera and controller desktop
+Exec=/home/user/Documents/Hiturbo-rs/hiturbo-rs
+Path=/home/user/Documents/Hiturbo-rs
+Icon=applications-multimedia
+Terminal=false
+Categories=AudioVideo;Utility;
