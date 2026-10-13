@@ -1204,14 +1204,14 @@ impl eframe::App for App {
         self.events();
         let title = if let Some(frame) = &self.frame {
             format!(
-                "hiturbo-rs — JPEG {}×{} · {:.1} fps · {} decoded frames",
+                "hiturbo-rs: JPEG {}×{} · {:.1} fps · {} decoded frames",
                 frame.width,
                 frame.height,
                 self.snapshot.decoded as f64 / self.snapshot.elapsed.max(1.),
                 self.snapshot.decoded
             )
         } else {
-            "hiturbo-rs — JPEG decoder".into()
+            "hiturbo-rs: JPEG decoder".into()
         };
         if title != self.window_title {
             ctx.send_viewport_cmd(egui::ViewportCommand::Title(title.clone()));

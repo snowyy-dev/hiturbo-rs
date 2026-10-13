@@ -25,7 +25,7 @@ fn main() -> eframe::Result {
     let smoke = args.iter().any(|s| s == "--smoke-test");
     let options = eframe::NativeOptions {
         viewport: eframe::egui::ViewportBuilder::default()
-            .with_title("hiturbo-rs — JPEG decoder")
+            .with_title("hiturbo-rs: JPEG decoder")
             .with_inner_size([1460., 940.])
             .with_min_inner_size([1120., 760.]),
         ..Default::default()

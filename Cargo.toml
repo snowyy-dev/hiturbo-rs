@@ -2,6 +2,7 @@
 name = "hiturbo-rs"
 version = "0.1.0"
 edition = "2024"
+license = "Apache-2.0"
 description = "OVERFLEW / HITURBO Wi-Fi camera and flight desktop"
 
 [dependencies]
