@@ -81,6 +81,11 @@ pub struct Controllers {
 impl Controllers {
     pub fn new() -> Result<Self, String> {
         sdl2::hint::set("SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS", "1");
+        #[cfg(target_os = "macos")]
+        // SDL's HIDAPI backend pumps the default Cocoa run loop during device
+        // enumeration, re-entering winit from App::new and hotplug updates.
+        // Use SDL's native IOKit / GameController backends on macOS instead.
+        sdl2::hint::set("SDL_JOYSTICK_HIDAPI", "0");
         let sdl = sdl2::init()?;
         let joystick = sdl.joystick()?;
         let gamepad = sdl.game_controller()?;

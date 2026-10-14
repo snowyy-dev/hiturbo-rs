@@ -7,7 +7,7 @@ Replimentation of the HiTurbo fpv drone protocol to rust.
 
 This code was reverse engineered based on the behavour of the android app and contains no hiturbo proprietary code.
 
-I currently only tested this on linux, so it may not work on windows or macos.
+I currently only tested this on linux and macos, so it may not work on windows.
 
 # Features
 - Support for xbox controller and radiomaster controllers

@@ -57,6 +57,19 @@ impl Default for Settings {
     }
 }
 fn default_capture_root() -> PathBuf {
+    #[cfg(target_os = "macos")]
+    {
+        home::home_dir()
+            .unwrap_or_else(std::env::temp_dir)
+            .join("Pictures")
+            .join("Hiturbo")
+            .join("captures")
+    }
+    #[cfg(not(target_os = "macos"))]
+    default_capture_root_by_executable()
+}
+#[cfg(not(target_os = "macos"))]
+fn default_capture_root_by_executable() -> PathBuf {
     let folder = std::env::current_exe()
         .ok()
         .and_then(|p| p.parent().map(|p| p.to_path_buf()))
@@ -127,7 +140,10 @@ pub struct App {
 impl App {
     pub fn new(cc: &eframe::CreationContext<'_>, replay: Option<PathBuf>, smoke: bool) -> Self {
         let settings = if smoke {
-            Settings::default()
+            Settings {
+                root: std::env::temp_dir().join("hiturbo-smoke"),
+                ..Default::default()
+            }
         } else {
             cc.storage
                 .and_then(|s| eframe::get_value(s, "settings"))

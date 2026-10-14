@@ -164,7 +164,9 @@ fn discovery_jpeg_camera_photo_capture_and_motor_pulses() {
     };
     let config = NetworkConfig {
         drone: Ipv4Addr::LOCALHOST,
-        local: Ipv4Addr::new(127, 0, 0, 2),
+        // macOS only configures 127.0.0.1 by default; other 127/8 addresses
+        // require an explicit loopback alias. The mock uses distinct ports.
+        local: Ipv4Addr::LOCALHOST,
         root: root.clone(),
         packet_log: true,
         save_stream: true,
